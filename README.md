@@ -22,4 +22,4 @@ yarn init -y //para iniciar a estrutura do projeto
 
 yarn add express // adiciona o componente para trabalhar com protrocolo de cominicação http put,get e outros
 
-yarn add nodemon // para reiniciar o servidor quando o mesmo é salvo
+yarn add nodemon -D (Develop)// para reiniciar o servidor quando o mesmo é salvo
