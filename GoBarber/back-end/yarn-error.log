@@ -1,25 +1,30 @@
 Arguments: 
-  /home/bruno/.nvm/versions/node/v10.16.3/bin/node /usr/share/yarn/bin/yarn.js add sequelize
+  /usr/bin/node /usr/share/yarn/bin/yarn.js add prettier eslint-coonfig-prettier eslint-plugin-prettier -D
 
 PATH: 
-  /home/bruno/.nvm/versions/node/v10.16.3/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games
+  /usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games
 
 Yarn version: 
-  1.19.1
+  1.19.0
 
 Node version: 
-  10.16.3
+  10.15.2
 
 Platform: 
   linux x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/sequelize: ETIMEDOUT
-      at Timeout._onTimeout (/usr/share/yarn/lib/cli.js:141224:19)
-      at ontimeout (timers.js:436:11)
-      at tryOnTimeout (timers.js:300:5)
-      at listOnTimeout (timers.js:263:5)
-      at Timer.processTimers (timers.js:223:10)
+  Error: https://registry.yarnpkg.com/eslint-coonfig-prettier: Not found
+      at Request.params.callback [as _callback] (/usr/share/yarn/lib/cli.js:66918:18)
+      at Request.self.callback (/usr/share/yarn/lib/cli.js:140539:22)
+      at Request.emit (events.js:189:13)
+      at Request.<anonymous> (/usr/share/yarn/lib/cli.js:141511:10)
+      at Request.emit (events.js:189:13)
+      at IncomingMessage.<anonymous> (/usr/share/yarn/lib/cli.js:141433:12)
+      at Object.onceWrapper (events.js:277:13)
+      at IncomingMessage.emit (events.js:194:15)
+      at endReadableNT (_stream_readable.js:1103:12)
+      at process._tickCallback (internal/process/next_tick.js:63:19)
 
 npm manifest: 
   {
