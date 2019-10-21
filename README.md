@@ -31,26 +31,26 @@ adicionar nodemon.json e "execMap":{
 
 Docker CE
 =====
-Instalação no Debian
-https://docs.docker.com/install/linux/docker-ce/debian/
-docker -v (mostra a versão)
-docker -help(lista Todos os comandos)
-docker ps(container que esta em execução) -a (mostra todos os criados)
-docker start database (database é o nome de imagem)
-docker logs database  (log de tudo que aconteceu no container)
+**Instalação no Debian**
+* https://docs.docker.com/install/linux/docker-ce/debian/
+* docker -v (mostra a versão)
+* docker -help(lista Todos os comandos)
+* docker ps(container que esta em execução) -a (mostra todos os criados)
+* docker start database (database é o nome de imagem)
+* docker logs database  (log de tudo que aconteceu no container)
 
 Instalando a imagem do postgres no Docker
-==
-docker run --name database -e POSTGRES_PASSWORD=docker -p 5432:5432 -d postgres:11 (usar a versão 11, outra versão pode dar erro)
+----
+* docker run --name database -e POSTGRES_PASSWORD=docker -p 5432:5432 -d postgres:11 (usar a versão 11, outra versão pode dar erro)
 
 Postbird(insterface utilizada para gerenciar banco de dados)
-==
-sudo apt update
-sudo apt install snapd
-sudo snap install postbird
+---
+* sudo apt update
+* sudo apt install snapd
+* sudo snap install postbird
 
 Sequelize
-==
+---
 Faz update select, sem a sintax do SQL
 
 SQL
@@ -100,20 +100,20 @@ Arquitetura MVC
 ===
 
 Model
-==
+--
 
 O model armazena a abstração do banco, utilizado para manipular os dados contidos nas tabelas do banco.
 Não possuem responsabilidade sobre a regra de negócio da nossa aplicação.
 
 Controller
-==
+--
 
 O controller é o ponto de entrada das requisições da nossa aplicação, uma rota geralmente está
 associada diretamente com um método do controller. Podemos incluir a grande parte das regras
 de negócio da aplicação nos controllers (conforme a aplicação cresce podemos isolar as regras).
 
 View
-==
+--
 
 A view é o retorno ao cliente, em aplicações que não utilizando o modelo de API REST isso pode ser
 um HTML, mas no nosso caso a view é apenas nosso JSON que será retornado ao front-end e depois
@@ -124,13 +124,13 @@ A face de um controller
 ===
 
 Classes
-==
+--
 
 • Sempre retorna um JSON;
 • Não chama outro controller/
 
 Método
-==
+--
 
 • Quando criar um novo controller:
 • Apenas 5 métodos;
@@ -209,7 +209,7 @@ Atualiza todos os documento com a nova identação e regras de ponto o virgula
 yarn eslint --fix src --est .js ("src" é o nome da pasta que vai ser corrigida e ".js" é o nome da extenção)
 
 padronização para editores diferentes
-==
+---
 
 se todos os desenvolvedores utilizam o VS Code nem precisa adicionar esse cara
 Adicionar o plugin EditorConfig  no VS Code , após instalado clicar com o botão direito na raiz do projeto e selecionar "Generate.editorconfig" alterar o arquivo ".editorconfig" para :
