@@ -29,7 +29,8 @@ adicionar nodemon.json e "execMap":{
   "js": "node -r sucrase/registe"
 }
 
-===Docker CE===
+Docker CE
+=====
 Instalação no Debian
 https://docs.docker.com/install/linux/docker-ce/debian/
 docker -v (mostra a versão)
@@ -38,15 +39,18 @@ docker ps(container que esta em execução) -a (mostra todos os criados)
 docker start database (database é o nome de imagem)
 docker logs database  (log de tudo que aconteceu no container)
 
-==Instalando a imagem do postgres no Docker==
+Instalando a imagem do postgres no Docker
+==
 docker run --name database -e POSTGRES_PASSWORD=docker -p 5432:5432 -d postgres:11 (usar a versão 11, outra versão pode dar erro)
 
-===Postbird=== insterface utilizada para gerenciar banco de dados
+Postbird(insterface utilizada para gerenciar banco de dados)
+==
 sudo apt update
 sudo apt install snapd
 sudo snap install postbird
 
-===Sequelize===
+Sequelize
+==
 Faz update select, sem a sintax do SQL
 
 SQL
@@ -66,7 +70,8 @@ Sequelize
 ,
 })
 
-==Migrations==
+Migrations
+===
  Controle de versão para base de dados;
 • Cada arquivo contém instruções para criação, alteração ou remoção de
 tabelas ou colunas;
@@ -81,7 +86,9 @@ produção ela JAMAIS poderá ser alterada, uma nova deve ser criada;
 • Cada migration deve realizar alterações em apenas uma tabela, você pode
 criar várias migrations para alterações maiores;
 
-===Seeds===
+Seeds
+===
+
 • População da base de dados para desenvolvimento;
 • Muito utilizado para popular dados para testes;
 • Executável apenas por código;
@@ -89,30 +96,49 @@ criar várias migrations para alterações maiores;
 • Caso sejam dados que precisam ir para produção, a própria migration
 pode manipular dados das tabelas;
 
-===Arquitetura MVC===
+Arquitetura MVC
+===
 
-==Model==
+Model
+==
+
 O model armazena a abstração do banco, utilizado para manipular os dados contidos nas tabelas do banco.
 Não possuem responsabilidade sobre a regra de negócio da nossa aplicação.
-==Controller==
+
+Controller
+==
+
 O controller é o ponto de entrada das requisições da nossa aplicação, uma rota geralmente está
 associada diretamente com um método do controller. Podemos incluir a grande parte das regras
 de negócio da aplicação nos controllers (conforme a aplicação cresce podemos isolar as regras).
-==View==
+
+View
+==
+
 A view é o retorno ao cliente, em aplicações que não utilizando o modelo de API REST isso pode ser
 um HTML, mas no nosso caso a view é apenas nosso JSON que será retornado ao front-end e depois
 manipulado pelo ReactJS ou React Native.
 
-===A face de um controller===
-==Classes;==
+
+A face de um controller
+===
+
+Classes
+==
+
 • Sempre retorna um JSON;
 • Não chama outro controller/
-==método;==
+
+Método
+==
+
 • Quando criar um novo controller:
 • Apenas 5 métodos;
 • Estou falando da mesma entidade?
 
-===Padrão de código===
+Padrão de código
+===
+
 yarn add eslint -D
 yar eslint --init
 selecione
@@ -157,7 +183,10 @@ ajusta o settings.json no vscode adicionar as configurações do eslint
         "camelcase": "off",
         "no-unused-vars": ["error", {"argsinorePattern": "next"}]
     }
-===Prettier===
+    
+Prettier
+===
+
 yarn add prettier eslint-config-prettier eslint-plugin-prettier -D
  alterar arquivo .eslintrc.js
 
@@ -173,11 +202,15 @@ criar arquivo .prettierrc transformar o arquivo em json no canto inferior do vcc
   "trailingComma": "es5"
 }
 
-==fix automatico==
+fix automatico
+===
+
 Atualiza todos os documento com a nova identação e regras de ponto o virgula
 yarn eslint --fix src --est .js ("src" é o nome da pasta que vai ser corrigida e ".js" é o nome da extenção)
 
-==padronização para editores diferentes== 
+padronização para editores diferentes
+==
+
 se todos os desenvolvedores utilizam o VS Code nem precisa adicionar esse cara
 Adicionar o plugin EditorConfig  no VS Code , após instalado clicar com o botão direito na raiz do projeto e selecionar "Generate.editorconfig" alterar o arquivo ".editorconfig" para :
 root = true
@@ -188,9 +221,98 @@ indent_size = 2
 charset = utf-8
 trim_trailing_whitespace = true
 insert_final_newline = true
-    
 
 
+Configurando Sequelize
+===
+
+Criar pastas primeiro
+src> criar pasta config>criar arquivo database.js
+src> criar pasta database>criar pasta migrations
+src> criar pasta app> criar pasta controllers  e tambem a pasta models src> app> criar pasta models
+
+depois de criado as pastas adicionar a dependencia
+yarn add sequelize
+yarn add sequilize-cli -D
+
+criar aquivo ".sequelizerc" na raiz do projeto, transformar em javascript e adicionar o codigo a baixo
+
+const { resolve } = require('path');
+
+module.export = {
+  config : resolve(__dirname, 'src', 'config', 'database.js'),
+  'models-path': resolve(__dirname, 'src', 'app', 'models'),
+  'migrations-path': resolve(__dirname, 'src', 'database', 'migrations'),
+  'seeders-path': resolve(__dirname, 'src', 'database', 'seeds'),
+};
+
+abrir a config>database.js e adicionar
+Adicionr as dependencias
+yarn add pg pg-hstore
+
+module.exports = {
+  dialect: 'postgres',
+  host: 'localhost',
+  username: 'postgres',
+  password: 'docker',
+  database: 'gobarber',
+  define: {
+    timestamps: true,
+    underscored: true,
+    underscoredAll: true,
+  },
+};
+
+Migration de usuário
+====
+
+yarn sequelize migration:create --name=create-users (vai criar um arquivo dentro da pasta migrations)
+module.exports = {
+  up: (queryInterface, Sequelize) => {
+    return queryInterface.createTable('users', {
+      id: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        autoIncrement: true,
+        primaryKey: true,
+      },
+      name: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      email: {
+        type: Sequelize.STRING,
+        allowNull: false,
+        unique: true,
+      },
+      password_has: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      provider: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: false,
+        allowNull: false,
+      },
+      create_at: {
+        type: Sequelize.DATE,
+        allowNull: false,
+      },
+      update_at: {
+        type: Sequelize.DATE,
+        allowNull: false,
+      },
+    });
+  },
+
+  down: queryInterface => {
+    return queryInterface.dropTable('users');
+  },
+};
+
+yarn sequelize db:migrate
+**(Travei aqui o arquide migrations não esta sendo gerado na pasta correta e se eu adionar manual da outro erro)**
+**Cannot find "/home/bruno/Documentos/bootvamp2019/GoBarber/bac-end/config/config.js". Have you run "sequelize init"?**
 
 
 
