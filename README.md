@@ -73,27 +73,28 @@ Sequelize
 Migrations
 ===
  Controle de versão para base de dados;
-• Cada arquivo contém instruções para criação, alteração ou remoção de
+ 
+* Cada arquivo contém instruções para criação, alteração ou remoção de
 tabelas ou colunas;
-• Mantém a base atualizada entre todos desenvolvedores do time e também
+* Mantém a base atualizada entre todos desenvolvedores do time e também
 no ambiente de produção;
-• Cada arquivo é uma migration e sua ordenação ocorre por data;
+* Cada arquivo é uma migration e sua ordenação ocorre por data;
  existe a possibilidade defazer holback
- • É possível desfazer uma migração se errarmos algo enquanto estivermos
+* É possível desfazer uma migração se errarmos algo enquanto estivermos
 desenvolvendo a feature;
-• Depois que a migration foi enviada para outros devs ou para ambiente de
+* Depois que a migration foi enviada para outros devs ou para ambiente de
 produção ela JAMAIS poderá ser alterada, uma nova deve ser criada;
-• Cada migration deve realizar alterações em apenas uma tabela, você pode
+* Cada migration deve realizar alterações em apenas uma tabela, você pode
 criar várias migrations para alterações maiores;
 
 Seeds
 ===
 
-• População da base de dados para desenvolvimento;
-• Muito utilizado para popular dados para testes;
-• Executável apenas por código;
-• Jamais será utilizado em produção;
-• Caso sejam dados que precisam ir para produção, a própria migration
+* População da base de dados para desenvolvimento;
+* Muito utilizado para popular dados para testes;
+* Executável apenas por código;
+* Jamais será utilizado em produção;
+* Caso sejam dados que precisam ir para produção, a própria migration
 pode manipular dados das tabelas;
 
 Arquitetura MVC
@@ -126,40 +127,49 @@ A face de um controller
 Classes
 --
 
-• Sempre retorna um JSON;
-• Não chama outro controller/
+* Sempre retorna um JSON;
+* Não chama outro controller/
 
 Método
 --
 
-• Quando criar um novo controller:
-• Apenas 5 métodos;
-• Estou falando da mesma entidade?
+* Quando criar um novo controller:
+* Apenas 5 métodos;
+* Estou falando da mesma entidade?
 
 Padrão de código
 ===
 
 yarn add eslint -D
+
 yar eslint --init
+
 selecione
 to check sintax, find problems, and enforce doce style
+
 em seguida
 javascript modules(import-exports)
+
 em seguida
 Nome of these
+
 em seguida
 desmarca com barra de espaço o brouwser e marca Node
+
 em seguida
 User a popular style guide
+
 em seguida
 Airbnb
+
 em seguida
 JavaScript em seguida Y para instalar tudo
 depois remover pakge-lock.json
 e rodar yarn para reconhecer as novas dependencias
 instalar a extenção Eslint no vscode
 
-ajusta o settings.json no vscode adicionar as configurações do eslint
+* ajusta o settings.json no vscode adicionar as configurações do eslint
+
     "eslint.autoFixOnSave": true,    
     "eslint.validadte":[
         { "language": "javascript",
