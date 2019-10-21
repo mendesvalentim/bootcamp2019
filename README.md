@@ -278,6 +278,8 @@ module.exports = {
   "/home/bruno/Documentos/bootcamp2019/GoBarber/back-end/src"
 *  Refiz todo o projeto novamente mas em uma pasta diferente 
    "/home/bruno/bootcamp2019/back-end/src"
+   
+Nãe era isso kkk avaliei a projeto antigo e tem uma linha no arquivo package.json nas dependencias   "elint": 1. alguma coisa foi só remover essa linha que deu certo, devo ter digitado errado e adicionou um dependencia desnecessária que bugou a parada 
  **Dessa forma deu certo, Gloria a Deus!!!**
 
 
