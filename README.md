@@ -166,7 +166,8 @@ em seguida
 JavaScript em seguida Y para instalar tudo
 depois remover pakge-lock.json
 e rodar yarn para reconhecer as novas dependencias
-instalar a extenção Eslint no vscode
+
+* instalar a extenção Eslint no vscode
 
 * ajusta o settings.json no vscode adicionar as configurações do eslint
 
@@ -216,7 +217,7 @@ fix automatico
 ===
 
 Atualiza todos os documento com a nova identação e regras de ponto o virgula
-yarn eslint --fix src --est .js ("src" é o nome da pasta que vai ser corrigida e ".js" é o nome da extenção)
+yarn eslint --fix src --ext .js ("src" é o nome da pasta que vai ser corrigida e ".js" é o nome da extenção)
 
 padronização para editores diferentes
 ---
@@ -237,15 +238,15 @@ Configurando Sequelize
 ===
 
 Criar pastas primeiro
-src> criar pasta config>criar arquivo database.js
-src> criar pasta database>criar pasta migrations
-src> criar pasta app> criar pasta controllers  e tambem a pasta models src> app> criar pasta models
+* src> criar pasta config>criar arquivo database.js
+* src> criar pasta database>criar pasta migrations
+* src> criar pasta app> criar pasta controllers  e tambem a pasta models src> app> criar pasta models
 
-depois de criado as pastas adicionar a dependencia
-yarn add sequelize
-yarn add sequilize-cli -D
+* depois de criado as pastas adicionar a dependencia
+* yarn add sequelize
+* yarn add sequilize-cli -D
 
-criar aquivo ".sequelizerc" na raiz do projeto, transformar em javascript e adicionar o codigo a baixo
+* criar aquivo ".sequelizerc" na raiz do projeto, transformar em javascript e adicionar o codigo a baixo
 
 const { resolve } = require('path');
 
@@ -256,9 +257,9 @@ module.export = {
   'seeders-path': resolve(__dirname, 'src', 'database', 'seeds'),
 };
 
-abrir a config>database.js e adicionar
-Adicionr as dependencias
-yarn add pg pg-hstore
+* abrir a config>database.js e adicionar
+* Adicionr as dependencias
+* yarn add pg pg-hstore
 
 module.exports = {
   dialect: 'postgres',
@@ -276,7 +277,8 @@ module.exports = {
 Migration de usuário
 ====
 
-yarn sequelize migration:create --name=create-users (vai criar um arquivo dentro da pasta migrations)
+* yarn sequelize migration:create --name=create-users (vai criar um arquivo dentro da pasta migrations)
+
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('users', {
@@ -320,9 +322,10 @@ module.exports = {
   },
 };
 
-yarn sequelize db:migrate
-**(Travei aqui o arquide migrations não esta sendo gerado na pasta correta e se eu adionar manual da outro erro)**
-**Cannot find "/home/bruno/Documentos/bootvamp2019/GoBarber/bac-end/config/config.js". Have you run "sequelize init"?**
+* yarn sequelize db:migrate
+
+* **(Travei aqui o arquide migrations não esta sendo gerado na pasta correta e se eu adionar manual da outro erro)**
+* **Cannot find "/home/bruno/Documentos/bootvamp2019/GoBarber/bac-end/config/config.js". Have you run "sequelize init"?**
 
 
 
