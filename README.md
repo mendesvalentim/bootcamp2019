@@ -24,10 +24,25 @@ yarn add express // adiciona o componente para trabalhar com protrocolo de comin
 yarn add nodemon -D (Develop)// para reiniciar o servidor quando o mesmo é salvo
 
 yarn add sucrase nodemon -D (Ajustar sintax e alinhamentos )
-yarn sucrase-node src/server.js
-adicionar nodemon.json e "execMap":{ 
-  "js": "node -r sucrase/registe"
+
+yarn sucrase-node src/server.js (para rodar o programa)
+
+* Adicionar no **"packege.json"** 
+  "scripts": {
+    "dev": "nodemon src/server.js"
+  }
+
+* criar arquivo nodemon.json e adicionar "execMap":{ 
+  "js": "node -r sucrase/register"
 }
+
+Para usar o mode debug 
+--
+* Adicionar no **"packege.json"** 
+  "scripts": {
+    "dev": "nodemon src/server.js",
+    **"dev:debug": "nodemon --inspect src/server.js"**
+  },
 
 Docker CE
 =====
@@ -198,8 +213,9 @@ e rodar yarn para reconhecer as novas dependencias
 Prettier
 ===
 
-yarn add prettier eslint-config-prettier eslint-plugin-prettier -D
- alterar arquivo .eslintrc.js
+* yarn add prettier eslint-config-prettier eslint-plugin-prettier -D
+* Remover o arquivo packege-lock.json
+ * alterar arquivo .eslintrc.js
 
     extends: ['airbnb-base', 'prettier'],
     plugins: ['prettier'],
