@@ -340,8 +340,13 @@ module.exports = {
 
 * yarn sequelize db:migrate
 
-* **(Travei aqui o arquide migrations não esta sendo gerado na pasta correta e se eu adionar manual da outro erro)**
+* **(Travei aqui o arquivo dee migrations não esta sendo gerado na pasta correta e se eu adicionar manual da outro erro)**
 * **Cannot find "/home/bruno/Documentos/bootvamp2019/GoBarber/bac-end/config/config.js". Have you run "sequelize init"?**
+* Acredito que o erro estava acontecendo devido ao caminho  ser muito longo
+  "/home/bruno/Documentos/bootcamp2019/GoBarber/back-end/src"
+*  Refiz todo o projeto novamente mas em uma pasta diferente 
+   "/home/bruno/bootcamp2019/back-end/src"
+ **Dessa forma deu certo, Gloria a Deus!!!**
 
 
 
