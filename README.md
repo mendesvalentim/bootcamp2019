@@ -85,73 +85,6 @@ Sequelize
 ,
 })
 
-Migrations
-===
- Controle de versão para base de dados;
- 
-* Cada arquivo contém instruções para criação, alteração ou remoção de
-tabelas ou colunas;
-* Mantém a base atualizada entre todos desenvolvedores do time e também
-no ambiente de produção;
-* Cada arquivo é uma migration e sua ordenação ocorre por data;
- existe a possibilidade defazer holback
-* É possível desfazer uma migração se errarmos algo enquanto estivermos
-desenvolvendo a feature;
-* Depois que a migration foi enviada para outros devs ou para ambiente de
-produção ela JAMAIS poderá ser alterada, uma nova deve ser criada;
-* Cada migration deve realizar alterações em apenas uma tabela, você pode
-criar várias migrations para alterações maiores;
-
-Seeds
-===
-
-* População da base de dados para desenvolvimento;
-* Muito utilizado para popular dados para testes;
-* Executável apenas por código;
-* Jamais será utilizado em produção;
-* Caso sejam dados que precisam ir para produção, a própria migration
-pode manipular dados das tabelas;
-
-Arquitetura MVC
-===
-
-Model
---
-
-O model armazena a abstração do banco, utilizado para manipular os dados contidos nas tabelas do banco.
-Não possuem responsabilidade sobre a regra de negócio da nossa aplicação.
-
-Controller
---
-
-O controller é o ponto de entrada das requisições da nossa aplicação, uma rota geralmente está
-associada diretamente com um método do controller. Podemos incluir a grande parte das regras
-de negócio da aplicação nos controllers (conforme a aplicação cresce podemos isolar as regras).
-
-View
---
-
-A view é o retorno ao cliente, em aplicações que não utilizando o modelo de API REST isso pode ser
-um HTML, mas no nosso caso a view é apenas nosso JSON que será retornado ao front-end e depois
-manipulado pelo ReactJS ou React Native.
-
-
-A face de um controller
-===
-
-Classes
---
-
-* Sempre retorna um JSON;
-* Não chama outro controller/
-
-Método
---
-
-* Quando criar um novo controller:
-* Apenas 5 métodos;
-* Estou falando da mesma entidade?
-
 Padrão de código
 ===
 
@@ -235,7 +168,7 @@ fix automatico
 Atualiza todos os documento com a nova identação e regras de ponto o virgula
 yarn eslint --fix src --ext .js ("src" é o nome da pasta que vai ser corrigida e ".js" é o nome da extenção)
 
-padronização para editores diferentes
+Padronização para editores diferentes
 ---
 
 se todos os desenvolvedores utilizam o VS Code nem precisa adicionar esse cara
@@ -262,7 +195,7 @@ Criar pastas primeiro
 * yarn add sequelize
 * yarn add sequilize-cli -D
 
-* criar aquivo ".sequelizerc" na raiz do projeto, transformar em javascript e adicionar o codigo a baixo
+* criar aquivo ".sequelizerc" na raiz do projeto, transformar em javascript e adicionar o codigo abaixo
 
 const { resolve } = require('path');
 
@@ -274,9 +207,6 @@ module.export = {
 };
 
 * abrir a config>database.js e adicionar
-* Adicionr as dependencias
-* yarn add pg pg-hstore
-
 module.exports = {
   dialect: 'postgres',
   host: 'localhost',
@@ -289,11 +219,13 @@ module.exports = {
     underscoredAll: true,
   },
 };
+* Adicionar as dependencias **yarn add pg pg-hstore**
 
 Migration de usuário
 ====
 
 * yarn sequelize migration:create --name=create-users (vai criar um arquivo dentro da pasta migrations)
+editar o arquivo criado
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
