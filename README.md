@@ -16,16 +16,15 @@ https://www.youtube.com/watch?v=c7P03kkrEG8
 
 Para Back-End
 
+Instalação yarn
+==
+https://yarnpkg.com/pt-BR/docs/install#debian-stable
 
-yarn init -y //para iniciar a estrutura do projeto
-
-yarn add express // adiciona o componente para trabalhar com protrocolo de cominicação http put,get e outros
-
-yarn add nodemon -D (Develop)// para reiniciar o servidor quando o mesmo é salvo
-
-yarn add sucrase nodemon -D (Ajustar sintax e alinhamentos )
-
-yarn sucrase-node src/server.js (para rodar o programa)
+* yarn init -y //para iniciar a estrutura do projeto
+* yarn add express // adiciona o componente para trabalhar com protrocolo de cominicação http put,get e outros
+* yarn add nodemon -D (Develop)// para reiniciar o servidor quando o mesmo é salvo
+* yarn add sucrase nodemon -D (Ajustar sintax e alinhamentos )
+* yarn sucrase-node src/server.js (para rodar o programa)
 
 * Adicionar no **"packege.json"** 
   "scripts": {
