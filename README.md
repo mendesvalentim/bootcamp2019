@@ -18,7 +18,12 @@ Para Back-End
 
 Instalação yarn
 ==
-https://yarnpkg.com/pt-BR/docs/install#debian-stable
+1. Intalar o Node 
+* instalar NVM https://github.com/nvm-sh/nvm
+* nvm install 12.13.0 (a ultima versão LTS do node)
+* nvm elias default 12.13.0
+2. Depois o Yarn
+* https://yarnpkg.com/pt-BR/docs/install#debian-stable
 
 * yarn init -y //para iniciar a estrutura do projeto
 * yarn add express // adiciona o componente para trabalhar com protrocolo de cominicação http put,get e outros
