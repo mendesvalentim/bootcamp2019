@@ -32,22 +32,28 @@ Instalação yarn
 * yarn sucrase-node src/server.js (para rodar o programa)
 
 * Adicionar no **"packege.json"** 
-  "scripts": {
+ ~~~javascript
+    "scripts": {
     "dev": "nodemon src/server.js"
-  }
+  } 
+  ~~~
 
-* criar arquivo nodemon.json e adicionar "execMap":{ 
+* criar arquivo nodemon.json e adicionar 
+~~~javascript
+  "execMap":{ 
   "js": "node -r sucrase/register"
 }
+~~~
 
 Para usar o mode debug 
 --
 * Adicionar no **"packege.json"** 
+~~~javascript
   "scripts": {
     "dev": "nodemon src/server.js",
     **"dev:debug": "nodemon --inspect src/server.js"**
   },
-
+~~~
 Docker CE
 =====
 **Instalação no Debian**
@@ -72,7 +78,7 @@ Sequelize
 ---
 Faz update select, sem a sintax do SQL
 
-SQL
+~~~javascript
 INSERT INTO users (name, email)
  VALUES (
  "Diego Fernandes"
@@ -88,7 +94,7 @@ Sequelize
  email: 'diego@rocketseat.com.br'
 ,
 })
-
+~~~
 Padrão de código
 ===
 
@@ -122,7 +128,7 @@ e rodar yarn para reconhecer as novas dependencias
 * instalar a extenção Eslint no vscode
 
 * ajusta o settings.json no vscode adicionar as configurações do eslint
-
+~~~javascript
     "eslint.autoFixOnSave": true,    
     "eslint.validadte":[
         { "language": "javascript",
@@ -146,7 +152,7 @@ e rodar yarn para reconhecer as novas dependencias
         "camelcase": "off",
         "no-unused-vars": ["error", {"argsinorePattern": "next"}]
     }
-    
+~~~    
 Prettier
 ===
 
@@ -161,11 +167,12 @@ e no rules adicinar
         "prettier/prettier": "error",
         
 criar arquivo .prettierrc transformar o arquivo em json no canto inferior do vccode e adicionar a linha a seguir
+~~~javascript
 {
   "singleQuote": true,
   "trailingComma": "es5"
 }
-
+~~~
 fix automatico
 ===
 
@@ -178,14 +185,14 @@ Padronização para editores diferentes
 se todos os desenvolvedores utilizam o VS Code nem precisa adicionar esse cara
 Adicionar o plugin EditorConfig  no VS Code , após instalado clicar com o botão direito na raiz do projeto e selecionar "Generate.editorconfig" alterar o arquivo ".editorconfig" para :
 root = true
-
+~~~javascript
 [*]
 indent_style = space
 indent_size = 2
 charset = utf-8
 trim_trailing_whitespace = true
 insert_final_newline = true
-
+~~~
 
 Configurando Sequelize
 ===
@@ -200,7 +207,7 @@ Criar pastas primeiro
 * yarn add sequilize-cli -D
 
 * criar aquivo ".sequelizerc" na raiz do projeto, transformar em javascript e adicionar o codigo abaixo
-
+~~~javascript
 const { resolve } = require('path');
 
 module.export = {
@@ -223,6 +230,7 @@ module.exports = {
     underscoredAll: true,
   },
 };
+~~~
 * Adicionar as dependencias **yarn add pg pg-hstore**
 
 Migration de usuário
@@ -230,7 +238,7 @@ Migration de usuário
 
 * yarn sequelize migration:create --name=create-users (vai criar um arquivo dentro da pasta migrations)
 editar o arquivo criado
-
+~~~javascript
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('users', {
@@ -273,18 +281,15 @@ module.exports = {
     return queryInterface.dropTable('users');
   },
 };
-
+~~~
 * yarn sequelize db:migrate
 
 * **(Travei aqui o arquivo dee migrations não esta sendo gerado na pasta correta e se eu adicionar manual da outro erro)**
 * **Cannot find "/home/bruno/Documentos/bootvamp2019/GoBarber/bac-end/config/config.js". Have you run "sequelize init"?**
-* Acredito que o erro estava acontecendo devido ao caminho  ser muito longo
-  "/home/bruno/Documentos/bootcamp2019/GoBarber/back-end/src"
-*  Refiz todo o projeto novamente mas em uma pasta diferente 
-   "/home/bruno/bootcamp2019/back-end/src"
-   
-Nãe era isso kkk avaliei a projeto antigo e tem uma linha no arquivo package.json nas dependencias   "elint": 1. alguma coisa foi só remover essa linha que deu certo, devo ter digitado errado e adicionou um dependencia desnecessária que bugou a parada 
- **Dessa forma deu certo, Gloria a Deus!!!**
+
+*  Refiz todo o projeto novamente mas em uma pasta diferente  
+* Avaliei a projeto antigo e tem uma linha no arquivo package.json nas dependencias **"elint": 1. alguma coisa** foi só remover essa linha que deu certo, devo ter digitado errado e adicionou um dependencia desnecessária que bugou a parada 
+* **Dessa forma deu certo, Gloria a Deus!!!**
 
 
 
